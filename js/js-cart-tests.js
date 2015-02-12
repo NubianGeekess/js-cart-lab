@@ -38,6 +38,33 @@ describe(' Cart :', function(){
   });
 
   describe('Updating the Cart', function(){
+    beforeEach( function(){
+      this.Cart = Cart;
+      this.Cart.init();
+    });
+
+    afterEach( function(){
+      this.Cart = undefined;
+    });
+
+    it("should be able to update the price ", function(){
+      this.Cart.nametxt.val("Tolu");
+      this.Cart.pricetxt.val(495);
+      this.Cart.qtytxt.val(14);
+      this.Cart.addButton.trigger("click");
+      this.Cart.editBtn.trigger("click");
+      expect( this.Cart.cartList.children('.item').last().find('.price').text()).toBe(432..toString());
+    });
+
+    it("should be able to update the quantity", function(){
+      this.Cart.nametxt.val("Tolu");
+      this.Cart.pricetxt.val(495);
+      this.Cart.qtytxt.val(14);
+      this.Cart.addButton.trigger("click");
+      this.Cart.editBtn.trigger("click");
+      expect( this.Cart.cartList.children('.item').last().find('.qty').text()).toBe(16..toString());
+    });
+
 
   });
 
