@@ -13,7 +13,6 @@
    <script type="text/javascript" src="https://rawgit.com/andela/andela-cdn/master/labs/lib/angular/angular.js"></script>
    <script type="text/javascript" src="https://rawgit.com/andela/andela-cdn/master/labs/lib/firebase/firebase.js"></script>
 
-
    <script type="text/javascript" src="https://rawgit.com/andela/andela-cdn/master/labs/lib/jasmine/jasmine.js"></script>
    <script type="text/javascript" src="https://rawgit.com/andela/andela-cdn/master/labs/lib/jasmine/jasmine-html.js">
    </script>
@@ -27,43 +26,12 @@
   <script type="text/javascript" src="./js/jscart.js"></script>
   <script type="text/javascript" src="./js/js-cart-tests.js"></script>
 
-  
-
-  
   <script type="text/javascript" src="https://rawgit.com/andela/andela-cdn/master/labs/application.js">
   </script>
 </head>
 <body ng-app="AndeLabs">
-<div ng-controller="LabCtrl">
+<div ng-controller="LabCtrl" class="fullctrl">
   <!-- Results injected here? --> 
-<h1>CART</h1>
-<div class="container">
-    <div id="cart">
-      <div class='totals'>
-      </div>
-      <form id="addToCart">
-        <fieldset>
-          <legend>Add To Cart</legend>
-          <p>Name: <input type="text" name="cart_text" id="nametxt" autofocus="autofocus" /></p>
-          <p>Price: <input type="text" name="cart_text" id="pricetxt" autofocus="autofocus" /></p>
-          <p>Qty: <input type="text" name="cart_text" id="qtytxt" autofocus="autofocus" /></p>
-          <input type="submit" name="add_button" id="addbtn" value="Add" />
-        </fieldset>
-      </form>
-    </div>
-
-    <div id="inventory">
-        <div class='item' id="prototype-item">
-          <h3></h3>
-          <ul>
-            <li>Price: <span class="price"></span></li>
-            <li>Qty: <span class="qty"></span></li>
-            <li><a href='#' class="edit">Edit Item</a></li>
-            <li><a href='#' class="delete">Delete Item</a></li>
-          </ul>
-        </div>
-    </div>
-</div>
 </div>
 </body>
 </html>

@@ -1,86 +1,103 @@
-$(document).ready(function(){
+$(function () {
 
-   window.Cart = {
-     nametxt :  $('input#nametxt'),
-     pricetxt : $('input#pricetxt'),
-     qtytxt : $('input#qtytxt'),
-     addButton : $('input#addbtn'),
-     prototypeItem : $('#prototype-item'),
-     item: null,
- 
-     init: function(){
+  window.Cart = {
+
+    nametxt: null,
+
+    pricetxt: null,
+
+    qtytxt: null,
+
+    addBtn: null,
+
+    inventory: null,
+
+    init: function(){
+      Cart.nametxt = $('#name-text');
+      Cart.pricetxt = $('#price-text');
+      Cart.qtytxt = $('#qty-text');
+      Cart.addBtn = $('#add-item');
+    
+      Cart.inventory = $('#inventory');
       var self = this;
+      Cart.addBtn.on("click", function( event ){
+          event.preventDefault();
+          self.addToCart();
 
-       this.prototypeItem.detach();
-       this.cartList = $('#inventory');
-       this.addButton.off().on('click', function (event) {
-         event.preventDefault();
+      });
 
-         var nameText = Cart.nametxt.val();
-         var priceText = Cart.pricetxt.val();
-         var qtyText = Cart.qtytxt.val();
+    },
 
-         Cart.item = Cart.prototypeItem.clone();
-         Cart.item.find('h3').text( nameText );
-         Cart.item.find('.price').text( priceText );
-         Cart.item.find('.qty').text( qtyText );
-         self.cartList.append(Cart.item);
+    addToCart: function(){
 
-        // Delete item from the list
-         var deleteBtn = Cart.item.find('a.delete');
-         deleteBtn.on('click', function( event){
-         event.preventDefault();
-         console.log("removing...");
+      var name = Cart.nametxt.val();
+      var price = Cart.pricetxt.val();
+      var qty = Cart.qtytxt.val();
+      var h3 = $('<h3></h3>');
+      var firstli = $('<li class="name"></li>');
+      var secondli = $('<li class="price"></li>');
+      var thirdli = $('<li class="qty"></li>');
+      var fourthli = $('<li></li>');
+      var fifthli = $('<li></li>');
+      var ul = $('<ul></li>');
+      var item = $('<div class="item"></div>');
+      var editButton = $('<a href="#" class="edit">Edit Item</a>');
+      var deleteButton = $('<a href="#" class="delete">Delete Item</a>');
 
-         // Delete item from the list
-         var listItem = this.parentNode;
-         var ul = listItem.parentNode;
-         var thisItem = ul.parentNode;
-         thisItem.remove();
-         });
+      deleteButton.on("click", function(){
+        var CartItem = $(this).parents(".item");
+        CartItem.remove();
+      });
 
-         // Update item in the list
-         var editBtn = Cart.item.find('a.edit');
-         editBtn.on('click', function(){
-           event.preventDefault();
-           console.log("editing...");
+      editButton.on("click", function(){
+         var CartItem = $(this).parents(".item");
+         var nameHolder = CartItem.find(".name");
+         var priceHolder = CartItem.find(".price");
+         var qtyHolder = CartItem.find(".qty");
+         console.log( nameHolder, priceHolder, qtyHolder );
 
-           var listItem = $(this).parent();
-           var ul = listItem.parent();
-           var priceBlock = ul.find('span.price');
-           var qtyBlock = ul.find('span.qty');
-           var qty_text = qtyBlock.text();
-           var text = priceBlock.text();
-          
-           //Swap the values with a textbox of the values
-           qtyBlock.empty();
-           priceBlock.empty();
-           priceBlock.append("<input type='text' size='5' class='priceval' value='" + text + "'></input>");
-           qtyBlock.append("<input type='text' size='5' class='qtyval' value='" + qty_text + "'></input>");
+         var currentName = nameHolder.text();
+         var currentPrice = priceHolder.text();
+         var currentQty =qtyHolder.text();
 
-           // When the Enter button is pressed, update the values of the text field
-           $('.priceval').keypress( function( event ) {
-             var keycode = (event.keyCode ? event.keyCode : event.which);
-             if( keycode == 13){
-               priceBlock.empty().append( $(this).val() );
-             }
-           });
-           $('.qtyval').keypress( function( event ) {
-             var keycode = (event.keyCode ? event.keyCode : event.which);
-             if( keycode == 13){
-               qtyBlock.empty().append( $(this).val() );
-             }
-           });
-         });
+         var priceeditTextBox = $('<input id="" />');
+         var qtyeditTextBox = $('<input id=""/>');
 
+         priceeditTextBox.val( currentPrice);
+         qtyeditTextBox.val( currentQty );
 
-         Cart.nametxt.val('').focus();
-       });
+         priceHolder.html( priceeditTextBox );
+         qtyHolder.html( qtyeditTextBox );
 
-      
-     }
-   };
+         CartItem.keypress(function(event){
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if(keycode == '13'){
+              priceHolder.text( priceeditTextBox.val() ); 
+              qtyHolder.text( qtyeditTextBox.val() ); 
+            }
+          });
+      });
 
-   Cart.init();
+      h3.text( name );
+      firstli.append('Name: ' + name);
+      secondli.append('Price: ' + price);
+      thirdli.append('Quantity: ' + qty);
+      fourthli.append( editButton );
+      fifthli.append( deleteButton );
+      ul.append(firstli);
+      ul.append(secondli);
+      ul.append(thirdli);
+      ul.append( fourthli );
+      ul.append( fifthli );
+      item.append( h3 );
+      item.append( ul );
+
+      Cart.inventory.append( item );
+      //console.log( Cart.inventory );
+    }
+
+  };
+
+  Cart.init();
 
 });
