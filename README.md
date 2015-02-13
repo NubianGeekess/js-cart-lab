@@ -36,9 +36,6 @@ The Shopping Cart application must meet the following constraints:
 **Design Constraints**
   + The various sections and elements of the Shopping Cart application are built by making each of the tests pass accordingly. Do well not to skip or delete any of the tests. They are very necessary in building every bit of the application.
 
- 
-###Sample output
-![JSTasker](jstasker_output.png)
 
 
 
