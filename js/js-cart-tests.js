@@ -123,8 +123,7 @@ describe("Application Skeleton: ", function(){
         });
     });
 
-
-    describe("Adding New Items to Cart: ", function(){
+    describe('Adding Items to the Cart', function(){
 
         it("Inventory should be empty", function(){
           var inventory = $('#inventory');
