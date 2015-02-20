@@ -21,7 +21,7 @@
 
 
    <script type="text/javascript" src="https://rawgit.com/andela/andela-cdn/master/labs/lib/underscore-min.js"></script>
-  <script type="text/javascript" src="https://rawgit.com/andela/andela-cdn/master/labs/lib/jquery/dist/jquery.js"></script>
+   <script type="text/javascript" src="https://rawgit.com/andela/andela-cdn/master/labs/lib/jquery/dist/jquery.js"></script>
 
   <script type="text/javascript" src="./js/jscart.js"></script>
   <script type="text/javascript" src="./js/js-cart-tests.js"></script>
@@ -30,6 +30,18 @@
   </script>
 </head>
 <body ng-app="AndeLabs">
+  <form id="addToCart">
+      <label for="name">Name: </label>
+      <input type="text" id="name-text" />
+      <label for="price">Price: </label>
+      <input type="text" id="price-text" />
+      <label for="qty">Qty: </label>
+      <input type="text" id="qty-text" />
+      <input type="submit" id="add-item" value="Add To Cart"></input>
+  </form>
+
+  <div id="inventory">
+  </div>
 <div ng-controller="LabCtrl">
   <!-- Results injected here? --> 
 </div>
