@@ -123,7 +123,8 @@ describe("Application Skeleton: ", function(){
         });
     });
 
-    describe('Adding Items to the Cart', function(){
+
+    describe("Adding New Items to Cart: ", function(){
 
         it("Inventory should be empty", function(){
           var inventory = $('#inventory');
@@ -163,7 +164,7 @@ describe("Application Skeleton: ", function(){
           expect( inventory.children(".item").length ).toBe( 3 );
         });
 
-        it("should have Name present in the item", function(){
+        it("should have the Name value present inside an element in the item", function(){
           var inventory = $('#inventory');
           inventory.empty();
           var nametext = $('#name-text');
@@ -179,7 +180,7 @@ describe("Application Skeleton: ", function(){
               return this.innerText === "StoneCold";
             }).length).not.toBe(0);
         });
-        it("should have Price present in the item", function(){
+        it("should have the Price value present inside an element in the item", function(){
           var inventory = $('#inventory');
           inventory.empty();
           var nametext = $('#name-text');
@@ -195,7 +196,7 @@ describe("Application Skeleton: ", function(){
               return this.innerText.indexOf("245") >= 0;
             }).length).not.toBe(0);
         });
-        it("should have Quantity present in the item", function(){
+        it("should have Quantity value present inside an element in the item", function(){
           var inventory = $('#inventory');
           inventory.empty();
           var nametext = $('#name-text');
@@ -214,7 +215,7 @@ describe("Application Skeleton: ", function(){
     });
 
     describe("Updating Items in a Cart: ", function(){
-        it("should have an edit button with class '.edit' ", function(){
+        it("should have an edit button named with class '.edit' ", function(){
           var inventory = $('#inventory');
           inventory.empty();
           var nametext = $('#name-text');
@@ -225,7 +226,47 @@ describe("Application Skeleton: ", function(){
           pricetext.val('245');
           qtytext.val('33');
           addButton.trigger("click");
-          expect( inventory.children(".item").last().find(".edit") ).not.toBe( 0 );
+          expect( inventory.children(".item").last().find(".edit").length ).not.toBe( 0 );
+        });
+        it("the edit button should be of an Input type", function(){
+          var inventory = $('#inventory');
+          inventory.empty();
+          var nametext = $('#name-text');
+          var pricetext = $('#price-text');
+          var qtytext = $('#qty-text');
+          var addButton = $('#add-item'); 
+          nametext.val('StoneCold');
+          pricetext.val('245');
+          qtytext.val('33');
+          addButton.trigger("click");
+          expect( inventory.children(".item").last().find(".edit")[0].nodeName ).toBe( "INPUT" );
+        });
+        it("the edit button should be of an Input type submit", function(){
+          var inventory = $('#inventory');
+          inventory.empty();
+          var nametext = $('#name-text');
+          var pricetext = $('#price-text');
+          var qtytext = $('#qty-text');
+          var addButton = $('#add-item'); 
+          nametext.val('StoneCold');
+          pricetext.val('245');
+          qtytext.val('33');
+          addButton.trigger("click");
+          expect( inventory.children(".item").last().find(".edit")[0].type ).toBe( "submit" );
+        });
+
+        it("should have an edit button named 'Edit Item' with class '.edit' ", function(){
+          var inventory = $('#inventory');
+          inventory.empty();
+          var nametext = $('#name-text');
+          var pricetext = $('#price-text');
+          var qtytext = $('#qty-text');
+          var addButton = $('#add-item'); 
+          nametext.val('StoneCold');
+          pricetext.val('245');
+          qtytext.val('33');
+          addButton.trigger("click");
+          expect( inventory.children(".item").last().find(".edit")[0].value ).toBe( "Edit Item" );
         });
         it("should create textboxes when Edit button is clicked", function(){
           var inventory = $('#inventory');
@@ -246,7 +287,6 @@ describe("Application Skeleton: ", function(){
               return this.value.indexOf("245") > -1 ;
             }).length).toBeGreaterThan( 0 );
         });
-
         it("should be able to update the price of the item", function(){
           var inventory = $('#inventory');
           inventory.empty();
@@ -319,7 +359,47 @@ describe("Application Skeleton: ", function(){
           pricetext.val('245');
           qtytext.val('33');
           addButton.trigger("click");
-          expect( inventory.children(".item").last().find(".delete") ).not.toBe( 0 );
+          expect( inventory.children(".item").last().find(".delete").length ).not.toBe( 0 );
+        });
+        it("the delete button should be of an Input type", function(){
+          var inventory = $('#inventory');
+          inventory.empty();
+          var nametext = $('#name-text');
+          var pricetext = $('#price-text');
+          var qtytext = $('#qty-text');
+          var addButton = $('#add-item'); 
+          nametext.val('StoneCold');
+          pricetext.val('245');
+          qtytext.val('33');
+          addButton.trigger("click");
+          expect( inventory.children(".item").last().find(".delete")[0].nodeName ).toBe( "INPUT" );
+        });
+        it("the delete button should be of an Input type submit", function(){
+          var inventory = $('#inventory');
+          inventory.empty();
+          var nametext = $('#name-text');
+          var pricetext = $('#price-text');
+          var qtytext = $('#qty-text');
+          var addButton = $('#add-item'); 
+          nametext.val('StoneCold');
+          pricetext.val('245');
+          qtytext.val('33');
+          addButton.trigger("click");
+          expect( inventory.children(".item").last().find(".delete")[0].type ).toBe( "submit" );
+        });
+
+        it("should have a delete button named 'Delete Item' with class '.delete' ", function(){
+          var inventory = $('#inventory');
+          inventory.empty();
+          var nametext = $('#name-text');
+          var pricetext = $('#price-text');
+          var qtytext = $('#qty-text');
+          var addButton = $('#add-item'); 
+          nametext.val('StoneCold');
+          pricetext.val('245');
+          qtytext.val('33');
+          addButton.trigger("click");
+          expect( inventory.children(".item").last().find(".delete")[0].value ).toBe( "Delete Item" );
         });
 
         it("Inventory should be empty if there is just one item present after an item  has been deleted ", function(){
@@ -339,7 +419,7 @@ describe("Application Skeleton: ", function(){
           expect( inventory.children(".item").last().find(".item").length).toBe( 0);
         });
 
-        it("Number Of Items should be one less after an item  has been deleted if Multiple items are added", function(){
+        it("Number Of Items should be one less after an item has been deleted if Multiple items are added", function(){
           var inventory = $('#inventory');
           inventory.empty();
           var nametext = $('#name-text');
