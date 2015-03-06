@@ -36,6 +36,21 @@ The Shopping Cart application must meet the following constraints:
 **Design Constraints**
   + The various sections and elements of the Shopping Cart application are built by making each of the tests pass accordingly. Do well not to skip or delete any of the tests. They are very necessary in building every bit of the application.
 
+###How to Run this Lab
 
++ Clone the repository
++ Open **index.html** in your browser to see the currently failing test specs you are to pass
++ Open the repository in your favorite text editor to explore the different files
++ Open **js\jscart.js** and write the function(s) or lines of code to pass the tests
++ You could refresh **index.html** in your browser intermittently to see the status of test specs.
+
+###Notes
+
++ Remember that passing code is just the first step. The goal is to work towards a solution that is as readable and expressive as you can make
+it.
+
++ Please make your solution as general as possible. Good code doesn't just pass the test suite, it works with any input that fits the specification.
+
+Have fun!
 
 
